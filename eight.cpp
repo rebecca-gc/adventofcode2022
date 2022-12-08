@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <math.h>
 #include <vector>
 
 using namespace std;
@@ -99,8 +98,6 @@ void part2(){
 
     cout << bestscore << endl;
 }
-
-
 
 int main(){
     part1();
