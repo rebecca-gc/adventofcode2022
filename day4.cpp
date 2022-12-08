@@ -1,5 +1,5 @@
 //four - camp cleanup
-//g++ -std=c++17 -Wall -pedantic -O3 four.cpp -o four
+//g++ -std=c++17 -Wall -pedantic -O3 day4.cpp -o four
 
 #include <iostream>
 #include <fstream>
@@ -12,7 +12,7 @@ void part1(){
     string sections;
     int overlaps = 0;
     
-    ifstream MyReadFile("fourinput.txt");
+    ifstream MyReadFile("input4.txt");
 
     while(getline (MyReadFile, sections)){
         bool dvorbei = false, bvorbei = false, cvorbei = false;
@@ -63,7 +63,7 @@ void part2(){
     string sections;
     int overlaps = 0;
     
-    ifstream MyReadFile("fourinput.txt");
+    ifstream MyReadFile("input4.txt");
 
     while(getline (MyReadFile, sections)){
         bool dvorbei = false, bvorbei = false, cvorbei = false;

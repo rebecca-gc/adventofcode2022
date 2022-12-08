@@ -1,5 +1,5 @@
 //five - supply stacks
-//g++ -std=c++17 -Wall -pedantic -O3 five.cpp -o five
+//g++ -std=c++17 -Wall -pedantic -O3 day5.cpp -o five
 
 #include <iostream>
 #include <fstream>
@@ -14,7 +14,7 @@ void part1(){
     int amount, from, to;
     vector<string> cargo (9);
 
-    ifstream MyReadFile("fiveinput.txt");
+    ifstream MyReadFile("input5.txt");
 
     while(getline (MyReadFile, moves)){
         if(moves[1] == '1'|| moves == "") moving = true;
@@ -55,7 +55,7 @@ void part2(){
     int amount, from, to;
     vector<string> cargo (9);
 
-    ifstream MyReadFile("fiveinput.txt");
+    ifstream MyReadFile("input5.txt");
 
     while(getline (MyReadFile, moves)){
         if(moves[1] == '1'|| moves == "") moving = true;

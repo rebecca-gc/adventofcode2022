@@ -1,5 +1,5 @@
 //one - calorie counting
-//g++ -std=c++17 -Wall -pedantic -O3 one.cpp -o one
+//g++ -std=c++17 -Wall -pedantic -O3 day1.cpp -o one
 
 #include <iostream>
 #include <fstream>
@@ -11,7 +11,7 @@ void part1(){
     string calories;
     int calsum, max = 0;
 
-    ifstream MyReadFile("oneinput.txt");
+    ifstream MyReadFile("input1.txt");
 
     while(getline (MyReadFile, calories)){
         if(calories == ""){
@@ -28,7 +28,7 @@ void part2(){
     string calories;
     int calsum, max1 = 0, max2 = 0, max3 = 0;
 
-    ifstream MyReadFile("input.txt");
+    ifstream MyReadFile("input1.txt");
 
     while(getline (MyReadFile, calories)){
         if(calories == ""){

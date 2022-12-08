@@ -15,7 +15,7 @@ using namespace std;
 void dirsize(){
     string command, commands;
 
-    ifstream MyReadFile("seveninput.txt");
+    ifstream MyReadFile("input7.txt");
     while(getline (MyReadFile, command)){
         commands += command;
     }
@@ -128,7 +128,7 @@ void bennisidee(){
     int pos = 0;
     int tiefe = 0;
 
-    ifstream MyReadFile("seveninput.txt");
+    ifstream MyReadFile("input7.txt");
     while(getline (MyReadFile, command)){
         if(command[0] == '$' && command[2] == 'c' && command[5] != '.'){
             knoten[pos][0] = tiefe;

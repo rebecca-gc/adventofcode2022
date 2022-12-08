@@ -1,5 +1,5 @@
 //three - rucksack reorganization
-//g++ -std=c++17 -Wall -pedantic -O3 three.cpp -o three
+//g++ -std=c++17 -Wall -pedantic -O3 day3.cpp -o three
 
 #include <iostream>
 #include <fstream>
@@ -12,7 +12,7 @@ void part1(){
     string rucksack;
     int prioritysum = 0;
 
-    ifstream MyReadFile("threeinput.txt");
+    ifstream MyReadFile("input3.txt");
 
     while(getline (MyReadFile, rucksack)){
         vector<char> items1 (53, 0);
@@ -38,7 +38,7 @@ void part2(){
     vector<char> items2 (53, 0);
     vector<char> items3 (53, 0);
 
-    ifstream MyReadFile("input.txt");
+    ifstream MyReadFile("input3.txt");
 
     while(getline (MyReadFile, rucksack)){
         if(elvenum % 3 == 1){

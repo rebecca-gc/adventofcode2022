@@ -1,5 +1,5 @@
 //six - tuning trouble
-//g++ -std=c++17 -Wall -pedantic -O3 six.cpp -o six
+//g++ -std=c++17 -Wall -pedantic -O3 day6.cpp -o six
 
 #include <iostream>
 #include <fstream>
@@ -13,7 +13,7 @@ void part1(){
     char a, b, c, d;
     int pos = 4;
 
-    ifstream MyReadFile("sixinput.txt");
+    ifstream MyReadFile("input6.txt");
 
     while(getline (MyReadFile, sms)){
         a = sms[0];
@@ -46,7 +46,7 @@ void part2(){
     vector<char> currentmarker (14);
     int pos = 14;
 
-    ifstream MyReadFile("sixinput.txt");
+    ifstream MyReadFile("input6.txt");
 
     while(getline (MyReadFile, sms)){
         for(unsigned i = 0; i < 14; ++i){
