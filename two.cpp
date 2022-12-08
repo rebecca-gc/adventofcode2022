@@ -1,8 +1,5 @@
-//two - rock paper scissor
-
-//input.txt
-
-//output: score following the strategy guide
+//two - rock paper scissors
+//g++ -std=c++17 -Wall -pedantic -O3 two.cpp -o two
 
 #include <iostream>
 #include <fstream>
@@ -10,12 +7,7 @@
 
 using namespace std;
 
-//A X rock 1
-//B Y paper 2
-//C Z Scissor 3
-//0 loss, 3 draw, 6 win
-
-void countScore(){
+void part1(){
     int score = 0;
     string play;
 
@@ -29,7 +21,7 @@ void countScore(){
             else if(play[2] == 'Y'){//paper
                 score += 8;
             }
-            else if(play[2] == 'Z'){//scissor
+            else{//scissor
                 score += 3;
             }
         }
@@ -40,18 +32,18 @@ void countScore(){
             else if(play[2] == 'Y'){//paper
                 score += 5;
             }
-            else if(play[2] == 'Z'){//scissor
+            else{//scissor
                 score += 9;
             }
         }
-        else if(play[0] == 'C'){//scissor
+        else{//scissor
             if(play[2] == 'X'){//rock
                 score += 7;
             }
             else if(play[2] == 'Y'){//paper
                 score += 2;
             }
-            else if(play[2] == 'Z'){//scissor
+            else{//scissor
                 score += 6;
             }
         }
@@ -59,11 +51,8 @@ void countScore(){
 
     cout << score << endl;
 }
-//A X rock 1
-//B Y paper 2
-//C Z Scissor 3
-//0 loss, 3 draw, 6 win
-void countScore2(){
+
+void part2(){
     int score = 0;
     string play;
 
@@ -77,7 +66,7 @@ void countScore2(){
             else if(play[2] == 'Y'){//draw: rock
                 score += 4;
             }
-            else if(play[2] == 'Z'){//win: paper
+            else{//win: paper
                 score += 8;
             }
         }
@@ -88,18 +77,18 @@ void countScore2(){
             else if(play[2] == 'Y'){//draw:paper
                 score += 5;
             }
-            else if(play[2] == 'Z'){//win: scissor
+            else{//win: scissor
                 score += 9;
             }
         }
-        else if(play[0] == 'C'){//scissor
+        else{//scissor
             if(play[2] == 'X'){//lose: paper
                 score += 2;
             }
             else if(play[2] == 'Y'){//draw: scissor
                 score += 6;
             }
-            else if(play[2] == 'Z'){//win: rock
+            else{//win: rock
                 score += 7;
             }
         }
@@ -109,5 +98,6 @@ void countScore2(){
 }
 
 int main(){
-    countScore2();
+    part1();
+    part2();
 }

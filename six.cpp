@@ -1,8 +1,5 @@
-//six - communication device
-
-//sixinput.txt
-
-//output: # of chars processed before a marker
+//six - tuning trouble
+//g++ -std=c++17 -Wall -pedantic -O3 six.cpp -o six
 
 #include <iostream>
 #include <fstream>
@@ -11,17 +8,18 @@
 
 using namespace std;
 
-void markerpos(){
+void part1(){
     string sms;    
-    ifstream MyReadFile("sixinput.txt");
     char a, b, c, d;
     int pos = 4;
+
+    ifstream MyReadFile("sixinput.txt");
+
     while(getline (MyReadFile, sms)){
         a = sms[0];
         b = sms[1];
         c = sms[2];
         d = sms[3];
-        
         while(!(a!=b && a!=c && a!=d && b!=c && b!=c && b!=d && c!=d)){
             a = b;
             b = c;
@@ -34,34 +32,28 @@ void markerpos(){
     cout << pos << endl;
 }
 
-bool alleUnterschiedlich(vector<char>& currentmarker){
+bool alldifferent(vector<char>& currentmarker){
     for(unsigned i = 0; i < currentmarker.size(); ++i){
         for(unsigned j = 0; j < currentmarker.size(); ++j){
-            if(i == j);
-            else{
-                if(currentmarker[i] == currentmarker[j]){
-                    return false;
-                }
-            }
+            if(i != j) if(currentmarker[i] == currentmarker[j]) return false;
         }
     }
     return true;
 }
 
-void markerpos14(){
+void part2(){
     string sms;    
-    ifstream MyReadFile("sixinput.txt");
     vector<char> currentmarker (14);
     int pos = 14;
+
+    ifstream MyReadFile("sixinput.txt");
+
     while(getline (MyReadFile, sms)){
         for(unsigned i = 0; i < 14; ++i){
             currentmarker[i] = sms[i];
         }
-
-        while(!alleUnterschiedlich(currentmarker)){
-            for(unsigned i = 0; i < currentmarker.size()-1; ++i){
-                currentmarker[i] = currentmarker[i+1];
-            }
+        while(!alldifferent(currentmarker)){
+            for(unsigned i = 0; i < currentmarker.size()-1; ++i) currentmarker[i] = currentmarker[i+1];
             currentmarker[13] = sms[pos];
             ++pos;
         }
@@ -71,5 +63,6 @@ void markerpos14(){
 }
 
 int main(){
-    markerpos14();
+    part1();
+    part2();
 }

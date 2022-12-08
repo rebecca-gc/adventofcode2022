@@ -1,8 +1,5 @@
-//one - counting calories
-
-//input.txt
-
-//output: # of the elve who is carrying the most calories and the # of calories
+//one - calorie counting
+//g++ -std=c++17 -Wall -pedantic -O3 one.cpp -o one
 
 #include <iostream>
 #include <fstream>
@@ -10,34 +7,26 @@
 
 using namespace std;
 
-void countingCalories(){
+void part1(){
     string calories;
-    int calsum;
-    int max = 0, elve = 0, pos = 0;
+    int calsum, max = 0;
 
-    ifstream MyReadFile("input.txt");
+    ifstream MyReadFile("oneinput.txt");
 
     while(getline (MyReadFile, calories)){
         if(calories == ""){
-            if(calsum > max){
-                max = calsum;
-                elve = pos;
-            }
-            ++pos;
+            if(calsum > max) max = calsum;
             calsum = 0;
         }
-        else{
-            calsum += stoi(calories);
-        }
+        else calsum += stoi(calories);
     }
 
-    cout << max << " " << elve << endl;
+    cout << max << endl;
 }
 
-void countingCaloriesBackUp(){
+void part2(){
     string calories;
-    int calsum, maxsum;
-    int max1 = 0, max2 = 0, max3 = 0;
+    int calsum, max1 = 0, max2 = 0, max3 = 0;
 
     ifstream MyReadFile("input.txt");
 
@@ -55,24 +44,17 @@ void countingCaloriesBackUp(){
                         max2 = calsum;
                     }
                 }
-                else{
-                    max3 = calsum;
-                }
+                else max3 = calsum;
             }
             calsum = 0;
         }
-        else{
-            calsum += stoi(calories);
-        }
+        else calsum += stoi(calories);
     }
 
-    maxsum = max1 + max2 + max3;
-
-    cout << maxsum << endl;
+    cout << max1 + max2 + max3 << endl;
 }
 
 int main(){
-    countingCaloriesBackUp();
+    part1();
+    part2();
 }
-
-//g++ -std=c++17 -Wall -pedantic -O3 one.cpp -o one

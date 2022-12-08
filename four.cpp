@@ -1,8 +1,5 @@
-//four - cleaning sections
-
-//fourinput.txt
-
-//output: # of pairs that include one another
+//four - camp cleanup
+//g++ -std=c++17 -Wall -pedantic -O3 four.cpp -o four
 
 #include <iostream>
 #include <fstream>
@@ -11,7 +8,7 @@
 
 using namespace std;
 
-void cleaningPairs(){
+void part1(){
     string sections;
     int overlaps = 0;
     
@@ -20,8 +17,8 @@ void cleaningPairs(){
     while(getline (MyReadFile, sections)){
         bool dvorbei = false, bvorbei = false, cvorbei = false;
         int minuscounter = 0, stelle = 0;
-        int a = 0, b = 0, c = 0, d = 0;
-        cout << sections << endl;
+        int a, b, c, d;
+        //this whole for-loop is just for initialising a,b,c and d. i'm sure there is a better way...
         for(unsigned i = sections.size() - 1; i > 0; --i){
             if(sections[i] == '-' && minuscounter == 1){
                 bvorbei = true;
@@ -56,17 +53,13 @@ void cleaningPairs(){
             }
         }
         a += (sections[0]-48) * pow(10,stelle);
-
-        if((a <= c && b >= d) || (a >= c && b <= d)){
-            ++overlaps;
-        }
-        cout << a << "-" << b <<","<<c<<"-"<<d << endl;
+        if((a <= c && b >= d) || (a >= c && b <= d)) ++overlaps;
     }
 
     cout << overlaps << endl;
 }
 
-void allOverlaps(){
+void part2(){
     string sections;
     int overlaps = 0;
     
@@ -75,8 +68,7 @@ void allOverlaps(){
     while(getline (MyReadFile, sections)){
         bool dvorbei = false, bvorbei = false, cvorbei = false;
         int minuscounter = 0, stelle = 0;
-        int a = 0, b = 0, c = 0, d = 0;
-        cout << sections << endl;
+        int a, b, c, d;
         for(unsigned i = sections.size() - 1; i > 0; --i){
             if(sections[i] == '-' && minuscounter == 1){
                 bvorbei = true;
@@ -111,17 +103,13 @@ void allOverlaps(){
             }
         }
         a += (sections[0]-48) * pow(10,stelle);
-
-        if((a <= c && b >= d) || (a >= c && b <= d) || (a <= c && b >= c) || (a <= d && b >= d) || (c <= a && d >= a) || (c <= b && d >= b)){
-            ++overlaps;
-        }
-        cout << a << "-" << b <<","<<c<<"-"<<d << endl;
+        if((a <= c && b >= d) || (a >= c && b <= d) || (a <= c && b >= c) || (a <= d && b >= d) || (c <= a && d >= a) || (c <= b && d >= b)) ++overlaps;
     }
 
     cout << overlaps << endl;
 }
 
 int main(){
-    cleaningPairs();
-    allOverlaps();
+    part1();
+    part2();
 }
