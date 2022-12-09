@@ -10,54 +10,49 @@
 using namespace std;
 
 bool visible(string& wood, int& r, int& c, int& rows, int& columns){
-    bool vis;
-    //links
-    int biggestbaum = wood[r * columns] -47;
-    for(int i = 0; i < c; ++i) if(wood[r * columns + i] -47 > biggestbaum) biggestbaum = wood[r * columns + i] -47;
-    if(wood[r * columns + c] -47 <= biggestbaum) vis = false;
-    else return true;
-    //rechts
-    biggestbaum = wood[r * columns + columns -1] -47;
-    for(int i = columns -1; i > c; --i) if(wood[r * columns + i] -47 > biggestbaum) biggestbaum = wood[r * columns + i] -47;
-    if(wood[r * columns + c]-47 <= biggestbaum) vis = false;
-    else return true;
+    //left
+    int tallesttree = wood[r * columns];
+    for(int i = 0; i < c; ++i) if(wood[r * columns + i] > tallesttree) tallesttree = wood[r * columns + i];
+    if(wood[r * columns + c] > tallesttree) return true;
+    //right
+    tallesttree = wood[r * columns + columns -1];
+    for(int i = columns -1; i > c; --i) if(wood[r * columns + i] > tallesttree) tallesttree = wood[r * columns + i];
+    if(wood[r * columns + c] > tallesttree) return true;
     //over
-    biggestbaum = wood[c]-47;
-    for(int i = 0; i < r; ++i) if(wood[i * columns + c]-47 > biggestbaum) biggestbaum = wood[i * columns + c]-47;
-    if(wood[r * columns + c]-47 <= biggestbaum) vis = false;
-    else return true;
+    tallesttree = wood[c];
+    for(int i = 0; i < r; ++i) if(wood[i * columns + c] > tallesttree) tallesttree = wood[i * columns + c];
+    if(wood[r * columns + c] > tallesttree) return true;
     //under
-    biggestbaum = wood[(rows-1) * columns + c]-47;
-    for(int i = rows-1; i > r; --i) if(wood[i * columns + c]-47 > biggestbaum) biggestbaum = wood[i * columns + c]-47;
-    if(wood[r * columns + c] -47<= biggestbaum) vis = false;
-    else return true;
+    tallesttree = wood[(rows -1) * columns + c];
+    for(int i = rows -1; i > r; --i) if(wood[i * columns + c] > tallesttree) tallesttree = wood[i * columns + c];
+    if(wood[r * columns + c] > tallesttree) return true;
 
-    return vis;
+    return false;
 }
 
 int score(string& wood, int& r, int& c, int& rows, int& columns){
     int score1 = 1, score2 = 1, score3 = 1, score4 = 1;
-    //links
+    //left
     int i = c-1;
-    while(wood[r * columns + i] -47 < wood[r * columns + c] -47 && i > 0){
+    while(wood[r * columns + i] < wood[r * columns + c] && i > 0){
         --i;
         ++score1;
     }
-    //rechts
+    //right
     i = c+1;
-    while(wood[r * columns + i] -47 < wood[r * columns + c] -47 && i < columns-1){
+    while(wood[r * columns + i] < wood[r * columns + c] && i < columns -1){
         ++i;
         ++score2;
     }
-    //oben
+    //over
     i = r-1;
-    while(wood[i * columns + c] -47 < wood[r * columns + c] -47 && i > 0){
+    while(wood[i * columns + c] < wood[r * columns + c] && i > 0){
         --i;
         ++score3;
     }
-    //unten
+    //under
     i = r+1;
-    while(wood[i * columns + c] -47 < wood[r * columns + c] -47 && i < rows-1){
+    while(wood[i * columns + c] < wood[r * columns + c] && i < rows -1){
         ++i;
         ++score4;
     }
@@ -77,8 +72,8 @@ void part1(){
         ++rows;
     }
 
-    int vis = 2 * rows + 2 * (columns-2);
-    for(int c = 1; c < columns-1; ++c) for(int r = 1; r < rows-1; ++r) if(visible(wood,r,c,rows,columns)) ++vis;
+    int vis = 2 * rows + 2 * (columns -2);
+    for(int c = 1; c < columns -1; ++c) for(int r = 1; r < rows -1; ++r) if(visible(wood,r,c,rows,columns)) ++vis;
 
     cout << vis << endl;
 }
@@ -95,7 +90,7 @@ void part2(){
         ++rows;
     }
 
-    for(int c = 1; c < columns-1; ++c) for(int r = 1; r < rows-1; ++r) if(score(wood,r,c,rows,columns) > bestscore) bestscore = score(wood,r,c,rows,columns);
+    for(int c = 1; c < columns -1; ++c) for(int r = 1; r < rows -1; ++r) if(score(wood,r,c,rows,columns) > bestscore) bestscore = score(wood,r,c,rows,columns);
 
     cout << bestscore << endl;
 }

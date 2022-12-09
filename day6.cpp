@@ -33,11 +33,7 @@ void part1(){
 }
 
 bool alldifferent(vector<char>& currentmarker){
-    for(unsigned i = 0; i < currentmarker.size(); ++i){
-        for(unsigned j = 0; j < currentmarker.size(); ++j){
-            if(i != j) if(currentmarker[i] == currentmarker[j]) return false;
-        }
-    }
+    for(unsigned i = 0; i < currentmarker.size(); ++i) for(unsigned j = 0; j < currentmarker.size(); ++j) if(i != j) if(currentmarker[i] == currentmarker[j]) return false;
     return true;
 }
 
